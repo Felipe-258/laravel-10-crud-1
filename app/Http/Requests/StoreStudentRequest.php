@@ -22,11 +22,10 @@ class StoreStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|string|max:50|unique:products,code',
+            'dni' => 'required|integer|unique:students,dni',
             'name' => 'required|string|max:250',
-            'quantity' => 'required|integer|min:1|max:10000',
-            'price' => 'required',
-            'description' => 'nullable|string'
+            'surname' => 'required|string|max:250',
+            'assist' => 'required|min:1',
         ];
     }
 }

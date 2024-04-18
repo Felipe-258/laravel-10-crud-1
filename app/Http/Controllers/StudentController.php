@@ -33,7 +33,8 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request) : RedirectResponse
     {
-        Student::create($request->all());
+        $data = $request->except('_token');
+        Student::create($data);
         return redirect()->route('students.index')
                 ->withSuccess('New Student is added successfully.');
     }
@@ -41,20 +42,20 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Student $Student) : View
+    public function show(Student $student) : View
     {
         return view('students.show', [
-            'Student' => $Student
+            'student' => $student
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Student $Student) : View
+    public function edit(Student $student) : View
     {
         return view('students.edit', [
-            'Student' => $Student
+            'student' => $student
         ]);
     }
 
@@ -63,17 +64,18 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student) : RedirectResponse
     {
-        $student->update($request->all());
+        $data = $request->except('_token');
+        $student->update($data);
         return redirect()->back()
                 ->withSuccess('Student is updated successfully.');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $Student) : RedirectResponse
+    public function destroy(Student $student) : RedirectResponse
     {
-        $Student->delete();
+        $student->delete();
         return redirect()->route('students.index')
                 ->withSuccess('Student is deleted successfully.');
     }
