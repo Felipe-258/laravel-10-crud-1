@@ -20,3 +20,6 @@ Route::get('/', function () {
 });
 Route::resource('products', ProductController::class);
 Route::resource('students', StudentController::class);
+Route::get('details', [ProductController::class, 'details']);
+Route::get('outJson', [ProductController::class, 'outJson']);
+Route::post('insertProduct', [ProductController::class, 'insertProduct']);

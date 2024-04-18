@@ -22,7 +22,7 @@ class UpdateStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'dni' => 'required|integer|unique:students,dni',
+            'dni' => 'required|integer|',
             'name' => 'required|string|max:250',
             'surname' => 'required|string|max:250',
             'assist' => 'required|min:1',
