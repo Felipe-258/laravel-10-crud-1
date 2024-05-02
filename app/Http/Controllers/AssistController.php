@@ -14,6 +14,7 @@ class AssistController extends Controller
         $total = DB::table('assists')->where('student_id', $student->id)->count();
         $assists = DB::table('assists')->where('student_id', $student->id)->get();
         /* dd($assists); */
+        //           carpeta  archivo
         return view('students.assist', [
             'student' => $student,
             'total' => $total,

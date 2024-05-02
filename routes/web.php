@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Log;
 use App\Http\Controllers\ProductController;
@@ -7,7 +8,6 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AssistController;
 use App\Http\Resources\Student;
 use App\Models\Assist;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +19,9 @@ use App\Models\Assist;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 Route::resource('products', ProductController::class);
 Route::resource('students', StudentController::class);
 
@@ -31,7 +31,19 @@ Route::get('outJson', [ProductController::class, 'outJson']);
 Route::get('assistance', [ProductController::class, 'assistance']);
 Route::post('insertProduct', [ProductController::class, 'insertProduct']);
 
-
+// login
 Route::get('/log', function () {
     // ...
 })->middleware([Log::class]);
+
+Route::get('/', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+// https://kinsta.com/es/blog/laravel-breeze/
+require __DIR__.'/auth.php';
