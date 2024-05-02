@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Assist;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use Illuminate\Support\Facades\DB;
+
 
 class StudentController extends Controller
 {
@@ -43,11 +46,11 @@ class StudentController extends Controller
      * Display the specified resource.
      */
     public function show(Student $student) : View
-    {
-        return view('students.show', [
-            'student' => $student
-        ]);
-    }
+{
+    return view('students.show', [
+        'student' => $student
+    ]);
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -58,6 +61,7 @@ class StudentController extends Controller
             'student' => $student
         ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -79,4 +83,9 @@ class StudentController extends Controller
         return redirect()->route('students.index')
                 ->withSuccess('Student is deleted successfully.');
     }
+
+    /* public function average($id) {
+        $total = DB::select("SELECT COUNT(*) as count FROM notes where student_id=$id");
+        return view('assist', compact('total'));
+    } */
 }

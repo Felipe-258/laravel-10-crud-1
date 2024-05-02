@@ -17,7 +17,7 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            "dni"=>$this->faker->numberBetween(1,99999999),
+            "dni"=>$this->faker->numberBetween(1,10),
             "name"=> $this->faker->firstName(),
             "surname"=> $this->faker->lastName(),
             "assist"=>$this->faker->numberBetween(1,50),

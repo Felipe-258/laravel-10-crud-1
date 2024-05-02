@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Log;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AssistController;
+use App\Http\Resources\Student;
+use App\Models\Assist;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +24,14 @@ Route::get('/', function () {
 });
 Route::resource('products', ProductController::class);
 Route::resource('students', StudentController::class);
+
+Route::get('assist/{student}/student', [AssistController::class, 'show'])->name('assist.show');
 Route::get('details', [ProductController::class, 'details']);
 Route::get('outJson', [ProductController::class, 'outJson']);
+Route::get('assistance', [ProductController::class, 'assistance']);
 Route::post('insertProduct', [ProductController::class, 'insertProduct']);
+
+
+Route::get('/log', function () {
+    // ...
+})->middleware([Log::class]);

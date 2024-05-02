@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851
+class ComposerStaticInit86b24978a76b4a432ec7c4dcd1f9be93
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -352,8 +352,8 @@ class ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -525,6 +525,8 @@ class ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApiController.php',
+        'App\\Http\\Controllers\\AssistController' => __DIR__ . '/../..' . '/app/Http/Controllers/AssistController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentController.php',
@@ -543,6 +545,7 @@ class ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851
         'App\\Http\\Requests\\UpdateProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateProductRequest.php',
         'App\\Http\\Requests\\UpdateStudentRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateStudentRequest.php',
         'App\\Http\\Resources\\Student' => __DIR__ . '/../..' . '/app/Http/Resources/Student.php',
+        'App\\Models\\Assist' => __DIR__ . '/../..' . '/app/Models/Assist.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -661,6 +664,7 @@ class ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\AssistFactory' => __DIR__ . '/../..' . '/database/factories/AssistFactory.php',
         'Database\\Factories\\ProductFactory' => __DIR__ . '/../..' . '/database/factories/ProductFactory.php',
         'Database\\Factories\\StudentFactory' => __DIR__ . '/../..' . '/database/factories/StudentFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
@@ -6451,9 +6455,9 @@ class ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0e54c0b383a7d1e32d0b67442d581851::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit86b24978a76b4a432ec7c4dcd1f9be93::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit86b24978a76b4a432ec7c4dcd1f9be93::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit86b24978a76b4a432ec7c4dcd1f9be93::$classMap;
 
         }, null, ClassLoader::class);
     }

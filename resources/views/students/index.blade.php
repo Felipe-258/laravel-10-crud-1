@@ -22,7 +22,7 @@
                                 <th scope="col">DNI</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
-                                <th scope="col">Assit</th>
+                                <th scope="col">Assist</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -38,6 +38,9 @@
                                         <form action="{{ route('students.destroy', $student->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
+
+                                            <a href="{{ route('assist.show', $student->id) }}"
+                                                class="btn btn-success btn-sm"><i class="bi bi-journal-text"></i> Assists</a>
 
                                             <a href="{{ route('students.show', $student->id) }}"
                                                 class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
