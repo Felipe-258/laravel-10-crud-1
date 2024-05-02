@@ -29,14 +29,14 @@
                                 </tr>
                                 <tbody>
                                     
-                                    @foreach ($assists as $assist)
+                                    @foreach ($assists as $dia)
                                         <tr>
                                             <td>
-                                                {{-- <p>{{ date("d/m/y", strtotime(substr( $assist->assist, 0, 10))) }}</p> --}}
+                                                <p>{{ date("d/m/y", strtotime(substr( $dia->assist, 0, 10))) }}</p>
                                                 
                                             </td>
                                             <td>
-                                                {{-- <p>{{ substr( $assist->assists, 10) }}</p> --}}
+                                                <p>{{ substr( $dia->assist, 10) }}</p>
                                             </td>
                                         </tr>
                                     @endforeach

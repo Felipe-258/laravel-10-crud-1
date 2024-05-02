@@ -11,7 +11,7 @@ class AssistController extends Controller
 {
     public function show(Student $student) : View
     {
-        $total = DB::table('notes')->where('student_id', $student->id)->count();
+        $total = DB::table('assists')->where('student_id', $student->id)->count();
         $assists = DB::table('assists')->where('student_id', $student->id)->get();
         /* dd($assists); */
         return view('students.assist', [
