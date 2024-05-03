@@ -33,10 +33,10 @@ class ProductController extends Controller
     public function index() /* : View */
     {
         $products = Product::all();
-        return ($products);
-        /* return view('products.index', [
+        /* return ($products); */
+        return view('products.index', [
             'products' => Product::latest()->paginate(5)
-        ]) */;
+        ]);
     }
 
     /**

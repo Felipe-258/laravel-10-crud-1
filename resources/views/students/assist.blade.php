@@ -20,6 +20,10 @@
                         <div class="col-md-6 text-center" style="line-height: 35px;">
                             <p><strong>Nombre del estudiante:</strong> {{ $student->name }}</p>
                             <p><strong>Total de asistencias:</strong> {{ $total }}</p> 
+                            <p style="color: {{ $color }}">
+                                Promedio: {{ $promedio }}%
+                            </p>
+                            
                             {{-- <label for="assist" class="col-md-5 col-form-label text-md-end text-start"><strong>Condicion: {{ $total }} </strong> </label>  --}}
                             
                             <table class="table table-bordered table-hover" style="width: 200%">

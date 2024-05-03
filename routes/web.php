@@ -19,17 +19,15 @@ use App\Models\Assist;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
-
-
+Route::get('/', function () {
+    return view('dashboard');
+});
 // login
 Route::get('/log', function () {
     // ...
 })->middleware([Log::class]);
 
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -37,9 +35,76 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
     Route::resource('products', ProductController::class);
     Route::resource('students', StudentController::class);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Route::get('addAssist', function () {
+        return view('students.addAssistForm');
+    })->name('assist.form');
+
+    Route::post('newAssist', [AssistController::class, 'store'])->name('assistForm.store');
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     Route::get('assist/{student}/student', [AssistController::class, 'show'])->name('assist.show');
     Route::get('details', [ProductController::class, 'details']);
     Route::get('outJson', [ProductController::class, 'outJson']);
