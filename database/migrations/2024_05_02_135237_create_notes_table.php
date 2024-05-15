@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('student_id')
                 ->references('id')
                 ->on('students');
+            $table->string('subject');
             $table->integer('note');
             $table->timestamps();
         });

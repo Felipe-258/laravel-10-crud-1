@@ -13,12 +13,50 @@
             <div class="card">
                 <div class="card-header">Student List</div>
                 <div class="card-body">
-                    <a href="{{ route('students.create') }}" class="btn btn-success btn-sm my-2"><i
-                            class="bi bi-plus-circle"></i> Add New Student</a>
+
+                    <div class="button-grid">
+                        <a href="{{ route('students.create') }}" class="btn btn-success btn-sm my-3"><i
+                                class="bi bi-plus-circle"></i> Add New Student</a>
+                        <a href="{{ route('assist.form') }}" class="btn btn-success btn-sm my-3"><i
+                                class="bi bi-plus-circle"></i> Add New Assist</a>
+                        <a href="{{ route('assist.form') }}" class="btn btn-success btn-sm my-3"><i
+                            class="bi bi-plus-circle"></i> Add New Note</a>
+                        {{-- <div class="button">
+                            <div class="separador"></div>
+                        </div> --}}
+                        
+
+                        <div class="button">
+
+                            <form action="{{ route('assistForm.store') }}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <label for="dni" class="fuente col-md-6  col-form-label text-md-end text-start ">Asistencia Rapida</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control " id="dni" name="dni"
+                                            placeholder="dni">
+                                        @if ($errors->has('dni'))
+                                            <span class="text-danger">{{ $errors->first('dni') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="button">
+                            <div class="mb-3 row offset-md-2">
+                                <button type="submit" class="col-md-6  btn btn-primary " value="Add Assist"> Add
+                                    Assist</button>
+                                {{-- <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Assist"> --}}
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                
+
+
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">S#</th>
+                                {{-- <th scope="col">S#</th> --}}
                                 <th scope="col">DNI</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
@@ -29,7 +67,7 @@
                         <tbody>
                             @forelse ($students as $student)
                                 <tr>
-                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    {{-- <th scope="row">{{ $loop->iteration }}</th> --}}
                                     <td>{{ $student->dni }}</td>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->surname }}</td>
@@ -40,7 +78,8 @@
                                             @method('DELETE')
 
                                             <a href="{{ route('assist.show', $student->id) }}"
-                                                class="btn btn-success btn-sm"><i class="bi bi-journal-text"></i> Assists</a>
+                                                class="btn btn-success btn-sm"><i class="bi bi-journal-text"></i>
+                                                Assists</a>
 
                                             <a href="{{ route('students.show', $student->id) }}"
                                                 class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
@@ -70,4 +109,19 @@
             </div>
         </div>
     </div>
+    <style>
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .separador {
+            width: 2px;
+        }
+
+        .fuente {
+            font-size: 13px;
+        }
+    </style>
 @endsection

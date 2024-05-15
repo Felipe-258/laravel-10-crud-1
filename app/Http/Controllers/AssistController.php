@@ -14,6 +14,20 @@ use Illuminate\Validation\Rule;
 
 class AssistController extends Controller
 {
+    public function search (Request $request)
+    {
+        /* dd($request); */
+        $request->validate([
+            'dni' => 'required|integer|exists:students,dni',
+        ]);
+        
+        $student = Student::where('dni', $request->dni)->first();
+
+        /* return route('students.show', $student->id); */
+        return redirect()->action(
+            [StudentController::class, 'show'], ['student' => $student->id]
+        );
+    }
     public function show(Student $student): View
     {
         $total = DB::table('assists')->where('student_id', $student->id)->count();
@@ -42,19 +56,22 @@ class AssistController extends Controller
     }
     public function store(Request $request)
 {
+    /* dd($request); */
     $request->validate([
-        'student_id' => 'required|integer|exists:students,id',
+        'dni' => 'required|integer|exists:students,dni',
     ]);
-
-    // Verifica si el estudiante existe, de lo contrario, lanza una excepción
-    $student = Student::findOrFail($request->input('student_id'));
-
+    // Verifica si el estudiante existe sino, lanza una excepción
+    /* $student = Student::findOrFail($request->input('student_id')); */
+    $student = Student::where('dni', $request->dni)->first();
+    /* dd($student); */
     $newAssist = new Assist();
     $newAssist->student_id = $student->id;
-    $newAssist->assist = now(); // Puedes usar now() para obtener la fecha y hora actual
+    $newAssist->assist = now();
     $newAssist->save();
-
-    return redirect()->route('assist.form')
+    Student::where('dni', $request->dni)
+    
+    ->update(['assist' => $student->assist + 1]);
+    return redirect()->route('students.index')
         ->withSuccess('New Assist registered successfully.');
 }
 }

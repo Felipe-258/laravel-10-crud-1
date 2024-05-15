@@ -16,15 +16,15 @@
             </div>
             <div class="card-body">
                 
-                <form action="{{ route('assistForm.store') }}" method="post">
+                <form action="{{ route('assistForm.search') }}" method="post">
                     @csrf
 
                     <div class="mb-3 row">
                         <label for="dni" class="col-md-4 col-form-label text-md-end text-start">dni</label>
                         <div class="col-md-6">
-                        <input type="text" class="form-control" id="student_id" name="student_id">
-                            @if ($errors->has('student_id'))
-                                <span class="text-danger">{{ $errors->first('student_id') }}</span>
+                        <input type="text" class="form-control" id="dni" name="dni">
+                            @if ($errors->has('dni'))
+                                <span class="text-danger">{{ $errors->first('dni') }}</span>
                             @endif
                         </div>
                     </div>

@@ -15,6 +15,7 @@
                     <a href="{{ route('products.index') }}" class="button">Products</a>
                     <a href="{{ route('students.index') }}" class="button">Students</a>
                     <a href="{{ route('assist.form') }}" class="button">Assist Form</a>
+                    <a href="{{ route('notes.index') }}" class="button">Notes</a>
                 </div>
                 
             </div>
@@ -23,7 +24,7 @@
     <style>
         .button-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 

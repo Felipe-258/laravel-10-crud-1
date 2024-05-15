@@ -6,6 +6,7 @@ use App\Http\Middleware\Log;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AssistController;
+use App\Http\Controllers\NoteController;
 use App\Http\Resources\Student;
 use App\Models\Assist;
 /*
@@ -21,7 +22,7 @@ use App\Models\Assist;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->middleware(['auth', 'verified']);
 // login
 Route::get('/log', function () {
     // ...
@@ -36,73 +37,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
     Route::resource('products', ProductController::class);
     Route::resource('students', StudentController::class);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Route::resource('notes', NoteController::class);
 
     Route::get('addAssist', function () {
         return view('students.addAssistForm');
     })->name('assist.form');
 
     Route::post('newAssist', [AssistController::class, 'store'])->name('assistForm.store');
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    Route::post('newAssist/{id}', [AssistController::class, 'search'])->name('assistForm.search');
     
     
     Route::get('assist/{student}/student', [AssistController::class, 'show'])->name('assist.show');
